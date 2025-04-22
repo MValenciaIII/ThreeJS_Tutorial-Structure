@@ -9,7 +9,7 @@ const camera = new PerspectiveCamera(
 );
 
   // move the camera back so we can view the scene
-  camera.position.set(0, 0, 10);
+  camera.position.set(0, 0, 70);
 
 return camera;
 }
