@@ -1,6 +1,8 @@
 import { createCamera } from './components/camera'
 import { createCube } from './components/cube';
 import { createStaff } from './components/staff/geometry';
+import { loadCan } from './components/can/can';
+import { createLights } from './components/lights';
 import { createScene } from './components/scene';
 import { createRenderer } from './systems/renderer';
 import {Resizer} from './systems/Resizer';
@@ -11,24 +13,35 @@ import {Resizer} from './systems/Resizer';
 let camera;
 let renderer;
 let scene;
+let light;
 
 class World {
 
 constructor(container) {
     camera = createCamera();
     scene = createScene();
+    light = createLights()
     renderer = createRenderer();
+    // const {can} = loadCan();
     container.append(renderer.domElement);
 
+    
     const cube = createCube();
 
-    scene.add(cube);
+    scene.add(cube, light);
 
-    const sphere = createStaff();
+    // const sphere = createStaff();
 
-    scene.add(sphere)
+    // scene.add(sphere)
+
 
     const resizer = new Resizer(container, camera, renderer)
+}
+
+async init() {
+   const {can} = await loadCan();
+
+    scene.add(can)
 }
 
 render() {
