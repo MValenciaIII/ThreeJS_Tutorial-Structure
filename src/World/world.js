@@ -1,6 +1,7 @@
 import { createCamera } from './components/camera'
 import { createCube } from './components/cube';
 import { createStaff } from './components/staff/geometry';
+import { createControls } from './systems/controls';
 import { loadCan } from './components/can/can';
 import { createLights } from './components/lights';
 import { createScene } from './components/scene';
